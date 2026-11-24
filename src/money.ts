@@ -3,10 +3,10 @@ export interface Coupon {
   amountCents?: number;
 }
 
-/** Splits a bill (in cents) between people. */
+/** Splits a bill (in cents) between people, rounding each share to the nearest cent so no money is lost. */
 export function splitBill(totalCents: number, people: number): number[] {
   if (!Number.isInteger(people) || people < 1) throw new RangeError("people must be a positive integer");
-  const share = Math.floor(totalCents / people);
+  const share = Math.round(totalCents / people);
   return Array.from({ length: people }, () => share);
 }
 
