@@ -1,0 +1,15 @@
+name: Doorman
+on:
+  issues:
+    types: [opened]
+  pull_request_target:
+    types: [opened, synchronize]
+permissions: {}
+jobs:
+  doorman:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jhermesn/doorman@9e401bd9e9aa825bcc20cc497af790001f63fcd2
+        with:
+          org: ${{ vars.FLY_ORG }}
+          sprites-token: ${{ secrets.DOORMAN_SPRITES_TOKEN }}
