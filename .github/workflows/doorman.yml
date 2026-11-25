@@ -9,7 +9,7 @@ jobs:
   doorman:
     runs-on: ubuntu-latest
     steps:
-      - uses: jhermesn/doorman@9e401bd9e9aa825bcc20cc497af790001f63fcd2
+      - uses: jhermesn/doorman@3757a9edbc4538691212d89aed7e8e53d72bd22e # v0.2.0
         with:
           org: ${{ vars.FLY_ORG }}
           sprites-token: ${{ secrets.DOORMAN_SPRITES_TOKEN }}
