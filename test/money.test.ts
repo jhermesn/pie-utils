@@ -6,6 +6,10 @@ test("even split", () => {
   assert.deepEqual(splitBill(1200, 3), [400, 400, 400]);
 });
 
+test("uneven split returns one share per person", () => {
+  assert.equal(splitBill(1000, 3).length, 3);
+});
+
 test("rejects zero people", () => {
   assert.throws(() => splitBill(1000, 0), RangeError);
 });
