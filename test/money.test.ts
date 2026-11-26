@@ -6,6 +6,12 @@ test("even split", () => {
   assert.deepEqual(splitBill(1200, 3), [400, 400, 400]);
 });
 
+test("uneven split keeps every cent", () => {
+  const shares = splitBill(1000, 3);
+  assert.deepEqual(shares, [334, 333, 333]);
+  assert.equal(shares.reduce((a, b) => a + b, 0), 1000);
+});
+
 test("rejects zero people", () => {
   assert.throws(() => splitBill(1000, 0), RangeError);
 });

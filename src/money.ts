@@ -7,7 +7,9 @@ export interface Coupon {
 export function splitBill(totalCents: number, people: number): number[] {
   if (!Number.isInteger(people) || people < 1) throw new RangeError("people must be a positive integer");
   const share = Math.floor(totalCents / people);
-  return Array.from({ length: people }, () => share);
+  const remainder = totalCents - share * people;
+  // The first `remainder` people pay one extra cent, so the shares always add up to the total.
+  return Array.from({ length: people }, (_, i) => (i < remainder ? share + 1 : share));
 }
 
 /** Applies a percentage coupon, then a fixed-amount coupon. */
